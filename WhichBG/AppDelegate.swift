@@ -61,7 +61,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
             let files = findAllExistingFilesIn(filesFolders)
-            println("Done.")
+            
+            for f in files {
+                println("File = \(f)")
+            }
         } else {
             // TODO: Show an alert here and exit gracefully.
             println("No Application Support directory was returned. Exiting.")
