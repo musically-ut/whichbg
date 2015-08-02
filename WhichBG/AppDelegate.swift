@@ -14,7 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // The statusBarItem must continue to exist after the applicationDidFinishLaunch
     // function finishes execution. Otherwise, the item is promptly removed from the status bar.
-    var statusBarItem : NSStatusItem?;
+    var statusBarItem : NSStatusItem?
+    let popOver = NSPopover()
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Using -1 instead of NSVariableStatusItemLength
@@ -22,7 +23,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1);
         statusBarItem!.image = NSImage(named: "StatusIcon");
         statusBarItem!.toolTip = "Ctrl-Click to quit.";
-        statusBarItem!.action = Selector("statusIconClicked:");
+        // statusBarItem!.action = Selector("statusIconClicked:");
+        statusBarItem!.action = Selector("togglePopover:")
+        
+        // This is the Popover we'll show:
+        popOver.contentViewController = DesktopPictureViewController(nibName: "DesktopPictureViewController", bundle: nil)
+    }
+    
+    func showPopover(sender: AnyObject?) {
+        if let button = statusBarItem!.button {
+            popOver.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSMinYEdge)
+        }
+    }
+    
+    func closePopover(sender: AnyObject?) {
+        popOver.performClose(sender)
+    }
+    
+    @IBAction func togglePopover(sender: NSStatusItem) {
+        if popOver.shown {
+            closePopover(sender)
+        } else {
+            showPopover(popOver)
+        }
+        
     }
     
     @IBAction func statusIconClicked(sender: NSStatusItem) {
