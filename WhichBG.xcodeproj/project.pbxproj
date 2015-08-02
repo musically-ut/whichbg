@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E9A6A0A790271B0E72837E0 /* Pods_WhichBG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175CCC6C36B59BC9E7FFBE53 /* Pods_WhichBG.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5A31B6691B6EB3EF00FBDF47 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B6681B6EB3EF00FBDF47 /* Core.swift */; };
 		5AF38BAA1B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF38BA81B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig */; };
 		5AF38BAB1B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF38BA91B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig */; };
 		5AF597991B355D0500F8CA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF597981B355D0500F8CA82 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		175CCC6C36B59BC9E7FFBE53 /* Pods_WhichBG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhichBG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A31B6681B6EB3EF00FBDF47 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		5AF38BA81B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhichBG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhichBG/Pods-WhichBG.debug.xcconfig"; sourceTree = "<group>"; };
 		5AF38BA91B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhichBG.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhichBG/Pods-WhichBG.release.xcconfig"; sourceTree = "<group>"; };
 		5AF597931B355D0500F8CA82 /* WhichBG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhichBG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 				5AF5979C1B355D0500F8CA82 /* Images.xcassets */,
 				5AF597961B355D0500F8CA82 /* Supporting Files */,
 				5AF597B71B35745200F8CA82 /* main.swift */,
+				5A31B6681B6EB3EF00FBDF47 /* Core.swift */,
 			);
 			path = WhichBG;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A31B6691B6EB3EF00FBDF47 /* Core.swift in Sources */,
 				5AF597B81B35745200F8CA82 /* main.swift in Sources */,
 				5AF597991B355D0500F8CA82 /* AppDelegate.swift in Sources */,
 			);
