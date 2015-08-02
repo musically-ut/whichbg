@@ -1,0 +1,23 @@
+PODS:
+  - SQLite.swift (0.1.0.pre):
+    - SQLite.swift/Library (= 0.1.0.pre)
+  - SQLite.swift/Core (0.1.0.pre)
+  - SQLite.swift/Library (0.1.0.pre):
+    - SQLite.swift/Core
+
+DEPENDENCIES:
+  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
+
+EXTERNAL SOURCES:
+  SQLite.swift:
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
+CHECKOUT OPTIONS:
+  SQLite.swift:
+    :commit: 89d16192bb73bf179c08c30227fbd9e52be6bf32
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
+SPEC CHECKSUMS:
+  SQLite.swift: 62bdf79b05b2a88b94d4b8f9a3b7aa94bfedc660
+
+COCOAPODS: 0.38.2
