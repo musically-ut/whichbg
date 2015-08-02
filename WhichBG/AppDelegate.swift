@@ -53,9 +53,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // Our strategy is to figure out the absolute paths and all possible combination of the folders and pictures
             // which exist and are valid image files. We'll show those items on a Grid and allow the user to open them
             // in finder using a single click.
+            
+            var filesFolders : [String] = []
             for row in db["data"] {
-                println("row = \(row[value])")
+                if let fileFolder = row[value] {
+                    filesFolders.append(fileFolder)
+                }
             }
+            let files = findAllExistingFilesIn(filesFolders)
+            println("Done.")
         } else {
             // TODO: Show an alert here and exit gracefully.
             println("No Application Support directory was returned. Exiting.")
