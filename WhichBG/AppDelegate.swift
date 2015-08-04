@@ -22,7 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // See: http://stackoverflow.com/a/24026327/987185
         statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1);
         statusBarItem!.image = NSImage(named: "StatusIcon");
-        statusBarItem!.toolTip = "Ctrl-Click to quit.";
         // statusBarItem!.action = Selector("statusIconClicked:");
         statusBarItem!.action = Selector("togglePopover:")
         

@@ -10,6 +10,12 @@ import Cocoa
 
 class DesktopPictureViewController: NSViewController {
 
+    @IBAction func Exitaction(sender: NSButton) {
+        NSApplication.sharedApplication().terminate(self)
+    }
+    
+    @IBOutlet weak var collectionView: NSScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
