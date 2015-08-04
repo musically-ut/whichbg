@@ -16,13 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-Zg-D1d">
-                    <rect key="frame" x="20" y="50" width="440" height="202"/>
-                    <clipView key="contentView" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="DJk-PD-Tvx">
+                <scrollView ambiguous="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-Zg-D1d">
+                    <rect key="frame" x="20" y="43" width="440" height="209"/>
+                    <clipView key="contentView" ambiguous="YES" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="DJk-PD-Tvx">
                         <rect key="frame" x="1" y="1" width="248" height="158"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView id="jsH-SV-ySe">
+                            <collectionView ambiguous="YES" id="jsH-SV-ySe">
                                 <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -42,8 +42,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-9d-NLx">
-                    <rect key="frame" x="207" y="13" width="66" height="32"/>
+                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-9d-NLx">
+                    <rect key="frame" x="207" y="2" width="66" height="32"/>
                     <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oW9-zK-qPb">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -53,6 +53,10 @@
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="s1d-9d-NLx" firstAttribute="centerX" secondItem="HEL-Zg-D1d" secondAttribute="centerX" id="S0T-Pq-5hc"/>
+                <constraint firstItem="s1d-9d-NLx" firstAttribute="top" secondItem="HEL-Zg-D1d" secondAttribute="bottom" constant="13" id="fqw-yi-xso"/>
+            </constraints>
             <point key="canvasLocation" x="363" y="44"/>
         </customView>
         <collectionViewItem id="O49-ON-Vw8">

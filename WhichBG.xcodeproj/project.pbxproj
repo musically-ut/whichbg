@@ -11,6 +11,7 @@
 		5A31B6691B6EB3EF00FBDF47 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B6681B6EB3EF00FBDF47 /* Core.swift */; };
 		5A31B66C1B6ED08600FBDF47 /* DesktopPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B66A1B6ED08600FBDF47 /* DesktopPictureViewController.swift */; };
 		5A31B66D1B6ED08600FBDF47 /* DesktopPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31B66B1B6ED08600FBDF47 /* DesktopPictureViewController.xib */; };
+		5A31B66F1B71679400FBDF47 /* GlobalEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B66E1B71679400FBDF47 /* GlobalEventMonitor.swift */; };
 		5AF38BAA1B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF38BA81B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig */; };
 		5AF38BAB1B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF38BA91B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig */; };
 		5AF597991B355D0500F8CA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF597981B355D0500F8CA82 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 		5A31B6681B6EB3EF00FBDF47 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		5A31B66A1B6ED08600FBDF47 /* DesktopPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopPictureViewController.swift; sourceTree = "<group>"; };
 		5A31B66B1B6ED08600FBDF47 /* DesktopPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesktopPictureViewController.xib; sourceTree = "<group>"; };
+		5A31B66E1B71679400FBDF47 /* GlobalEventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEventMonitor.swift; sourceTree = "<group>"; };
 		5AF38BA81B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhichBG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhichBG/Pods-WhichBG.debug.xcconfig"; sourceTree = "<group>"; };
 		5AF38BA91B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhichBG.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhichBG/Pods-WhichBG.release.xcconfig"; sourceTree = "<group>"; };
 		5AF597931B355D0500F8CA82 /* WhichBG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhichBG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				5AF597961B355D0500F8CA82 /* Supporting Files */,
 				5AF597B71B35745200F8CA82 /* main.swift */,
 				5A31B6681B6EB3EF00FBDF47 /* Core.swift */,
+				5A31B66E1B71679400FBDF47 /* GlobalEventMonitor.swift */,
 			);
 			path = WhichBG;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A31B6691B6EB3EF00FBDF47 /* Core.swift in Sources */,
+				5A31B66F1B71679400FBDF47 /* GlobalEventMonitor.swift in Sources */,
 				5AF597B81B35745200F8CA82 /* main.swift in Sources */,
 				5A31B66C1B6ED08600FBDF47 /* DesktopPictureViewController.swift in Sources */,
 				5AF597991B355D0500F8CA82 /* AppDelegate.swift in Sources */,
