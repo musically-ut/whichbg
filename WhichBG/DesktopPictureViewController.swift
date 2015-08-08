@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Foundation
 import SQLite
 
 class DesktopPictureViewController: NSViewController {
@@ -15,12 +16,9 @@ class DesktopPictureViewController: NSViewController {
         NSApplication.sharedApplication().terminate(self)
     }
     
-    @IBOutlet weak var collectionView: NSScrollView!
+    @IBOutlet weak var scrollView: NSScrollView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-        
+    func refreshFiles() -> [String]? {
         // Magic brought to you by SO:
         // http://stackoverflow.com/questions/30954492/how-to-get-the-path-to-the-current-workspace-screens-wallpaper-on-osx
         
@@ -49,13 +47,64 @@ class DesktopPictureViewController: NSViewController {
             }
             let files = findAllExistingFilesIn(filesFolders)
             
-            for f in files {
-                println("File = \(f)")
-            }
+            return files
         } else {
-            // TODO: Show an alert here and exit gracefully.
             println("No Application Support directory was returned. Exiting.")
+            return nil
         }
     }
     
+    @IBOutlet weak var collectionView: NSScrollView!
+    @IBOutlet weak var imageCollectionView: NSCollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do view setup here.
+        
+        let imageWidth : CGFloat = 200.0, gutter : CGFloat = 10.0
+        var numImages : Int = 0, lastImg : NSImageView? = nil
+        
+        if let files = self.refreshFiles() {
+            // Silently ignoring the files for which data cannot be loaded
+            let images = files.map { NSImage(contentsOfFile: $0) }.filter { $0 != nil }.map { $0! }
+            self.imageCollectionView.itemPrototype = WallpaperItem()
+            self.imageCollectionView.selectable = true
+            self.imageCollectionView.content = images
+            
+            self.imageCollectionView!.autoresizingMask = .ViewMaxXMargin | .ViewMinXMargin | .ViewMaxYMargin | .ViewMinYMargin
+            // self.imageCollectionView!.autoresizingMask = NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewMaxXMargin | NSAutoresizingMaskOptions.ViewMinYMargin | NSAutoresizingMaskOptions.ViewHeightSizable | NSAutoresizingMaskOptions.ViewMaxYMargin
+            
+            for (idx, img) in enumerate(images) {
+                let item = self.imageCollectionView.itemAtIndex(idx) as? WallpaperItem
+                item!.getView().image = img
+            }
+        } else {
+            let errorLabel = NSTextView(frame: self.collectionView.frame)
+            errorLabel.editable = false
+            errorLabel.string = "Error!"
+            
+            self.collectionView.addSubview(errorLabel)
+            // TODO: Show that nothing could be shown.
+        }
+    }
+}
+
+class WallpaperItem : NSCollectionViewItem {
+    
+    var wallpaperView: NSImageView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func loadView() {
+        // self.wallpaperView = NSImageView(frame: NSZeroRect)
+        let marginX = CGFloat(0.0), marginY = CGFloat(0.0), imageWidth = CGFloat(320.0), imageHeight = CGFloat(240.0)
+        self.wallpaperView = NSImageView(frame: NSMakeRect(marginX, marginY, imageWidth, imageHeight))
+        self.view = self.wallpaperView!
+    }
+    
+    func getView() -> NSImageView {
+        return self.wallpaperView!
+    }
 }
