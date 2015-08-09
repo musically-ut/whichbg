@@ -67,7 +67,7 @@ class DesktopPictureViewController: NSViewController {
             self.imageCollectionView.hidden = false
             
             // Silently ignoring the files for which data cannot be loaded
-            let images = files.map { NSImage(contentsOfFile: $0) }.filter { $0 != nil }.map { $0! }
+            let imagesAndPaths = files.map { ($0, NSImage(contentsOfFile: $0)) }.filter { $0.1 != nil }.map { ($0.0, $0.1!) }
             
             let contentHeight = self.collectionView.contentSize.height
             let gutter = CGFloat(10)
@@ -75,11 +75,11 @@ class DesktopPictureViewController: NSViewController {
             self.imageCollectionView.minItemSize = NSMakeSize((16.0 / 10.0) * contentHeight + gutter, contentHeight)
             self.imageCollectionView.itemPrototype = WallpaperItem()
             self.imageCollectionView.selectable = true
-            self.imageCollectionView.content = images
+            self.imageCollectionView.content = imagesAndPaths.map { $0.1 }
 
-            for (idx, img) in enumerate(images) {
+            for (idx, imgPathTuple) in enumerate(imagesAndPaths) {
                 let item = self.imageCollectionView.itemAtIndex(idx) as? WallpaperItem
-                item!.getView().image = img
+                item!.setImage(imgPathTuple.1, path: imgPathTuple.0)
             }
         } else {
             self.imageCollectionView.hidden = true
@@ -99,13 +99,29 @@ class DesktopPictureViewController: NSViewController {
 
 class WallpaperItem : NSCollectionViewItem {
     var wallpaperView: NSImageView?
+    var path : String?
     
     override func loadView() {
         self.wallpaperView = NSImageView(frame: NSZeroRect)
         self.view = self.wallpaperView!
     }
     
-    func getView() -> NSImageView {
-        return self.wallpaperView!
+    func setImage(image: NSImage, path: String) {
+        self.path = path
+        self.wallpaperView!.image = image
+    }
+    
+    override var selected : Bool {
+        didSet {
+            if (selected && self.path != nil) {
+                println("Showing path: \(self.path)")
+                if let fileURL = NSURL(fileURLWithPath: self.path!) {
+                    NSWorkspace.sharedWorkspace().activateFileViewerSelectingURLs([ fileURL ])
+                } else {
+                    // TODO: Show an alert to the user
+                    println("Failing silently on account of being unable to convert path to URL.")
+                }
+            }
+        }
     }
 }
