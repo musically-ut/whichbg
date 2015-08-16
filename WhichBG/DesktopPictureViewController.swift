@@ -16,6 +16,10 @@ class DesktopPictureViewController: NSViewController {
         NSApplication.sharedApplication().terminate(self)
     }
     
+    @IBAction func helpAction(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://github.com/musically-ut/WhichBG")!)
+    }
+    
     @IBOutlet weak var scrollView: NSScrollView!
     
     func refreshFiles() -> [String]? {
