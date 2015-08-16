@@ -12,8 +12,6 @@
 		5A31B66C1B6ED08600FBDF47 /* DesktopPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B66A1B6ED08600FBDF47 /* DesktopPictureViewController.swift */; };
 		5A31B66D1B6ED08600FBDF47 /* DesktopPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31B66B1B6ED08600FBDF47 /* DesktopPictureViewController.xib */; };
 		5A31B66F1B71679400FBDF47 /* GlobalEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B66E1B71679400FBDF47 /* GlobalEventMonitor.swift */; };
-		5AF38BAA1B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF38BA81B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig */; };
-		5AF38BAB1B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF38BA91B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig */; };
 		5AF597991B355D0500F8CA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF597981B355D0500F8CA82 /* AppDelegate.swift */; };
 		5AF5979D1B355D0500F8CA82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF5979C1B355D0500F8CA82 /* Images.xcassets */; };
 		5AF597AC1B355D0500F8CA82 /* WhichBGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF597AB1B355D0500F8CA82 /* WhichBGTests.swift */; };
@@ -202,7 +200,7 @@
 		5AF5978B1B355D0500F8CA82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Utkarsh Upadhyay";
 				TargetAttributes = {
 					5AF597921B355D0500F8CA82 = {
@@ -239,8 +237,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A31B66D1B6ED08600FBDF47 /* DesktopPictureViewController.xib in Resources */,
-				5AF38BAA1B6E61FA003A1EA7 /* Pods-WhichBG.debug.xcconfig in Resources */,
-				5AF38BAB1B6E61FA003A1EA7 /* Pods-WhichBG.release.xcconfig in Resources */,
 				5AF5979D1B355D0500F8CA82 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
