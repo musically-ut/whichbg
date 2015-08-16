@@ -1,3 +1,5 @@
+![Which BG](http://i.imgur.com/CrpbUNA.png)
+
 # WhichBG
 
 ***Locate your OSX wallpapers.***
