@@ -18,32 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView ambiguous="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" allowsMagnification="YES" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-Zg-D1d">
-                    <rect key="frame" x="20" y="32" width="440" height="213"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="DJk-PD-Tvx">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="213"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView autoresizesSubviews="NO" ambiguous="YES" selectable="YES" maxNumberOfRows="1" id="jsH-SV-ySe">
-                                <rect key="frame" x="0.0" y="0.0" width="440" height="213"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <connections>
-                                    <outlet property="itemPrototype" destination="O49-ON-Vw8" id="VMF-2I-8Rx"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="KIV-Ad-vIW">
-                        <rect key="frame" x="1" y="144" width="233" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="x87-n5-NqJ">
-                        <rect key="frame" x="234" y="1" width="15" height="143"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
                 <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-9d-NLx">
                     <rect key="frame" x="207" y="7" width="66" height="19"/>
                     <buttonCell key="cell" type="recessed" title="Quit" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oW9-zK-qPb">
@@ -64,6 +38,32 @@
                         <action selector="helpAction:" target="-2" id="2EQ-rr-Ph6"/>
                     </connections>
                 </button>
+                <scrollView ambiguous="YES" misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" allowsMagnification="YES" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-Zg-D1d">
+                    <rect key="frame" x="20" y="32" width="440" height="213"/>
+                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="DJk-PD-Tvx">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="213"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView autoresizesSubviews="NO" ambiguous="YES" selectable="YES" maxNumberOfColumns="1" id="jsH-SV-ySe">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="213"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="itemPrototype" destination="O49-ON-Vw8" id="VMF-2I-8Rx"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="KIV-Ad-vIW">
+                        <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="x87-n5-NqJ">
+                        <rect key="frame" x="424" y="0.0" width="16" height="213"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
                 <constraint firstItem="s1d-9d-NLx" firstAttribute="centerX" secondItem="HEL-Zg-D1d" secondAttribute="centerX" id="S0T-Pq-5hc"/>
@@ -71,14 +71,6 @@
             </constraints>
             <point key="canvasLocation" x="139" y="25.5"/>
         </customView>
-        <collectionViewItem id="O49-ON-Vw8">
-            <connections>
-                <outlet property="view" destination="jGb-TB-udU" id="H8r-2Z-ZQz"/>
-            </connections>
-        </collectionViewItem>
-        <view id="jGb-TB-udU">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-            <autoresizingMask key="autoresizingMask"/>
-        </view>
+        <collectionViewItem id="O49-ON-Vw8"/>
     </objects>
 </document>
