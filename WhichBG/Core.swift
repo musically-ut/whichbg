@@ -26,7 +26,7 @@ func isFile(path: String) -> Bool {
 func findAllExistingFilesIn(fileFolderList: [String]) ->  [String] {
     var folders : [String] = [], absFiles : [String] = [], relFiles : [String] = [];
     
-    let fullFileFolders = fileFolderList.map({ $0.stringByExpandingTildeInPath })
+    let fullFileFolders = fileFolderList.map({ ($0 as NSString).stringByExpandingTildeInPath })
     
     for fileFolder in fullFileFolders {
         if isDir(fileFolder) {
@@ -42,7 +42,7 @@ func findAllExistingFilesIn(fileFolderList: [String]) ->  [String] {
     
     for folder in folders {
         for file in relFiles {
-            let fileAbsPath = folder.stringByAppendingPathComponent(file)
+            let fileAbsPath = (folder as NSString).stringByAppendingPathComponent(file)
             if isFile(fileAbsPath) {
                 allFiles.append(fileAbsPath)
             }
