@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E9A6A0A790271B0E72837E0 /* Pods_WhichBG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175CCC6C36B59BC9E7FFBE53 /* Pods_WhichBG.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1E9A6A0A790271B0E72837E0 /* Pods_WhichBG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175CCC6C36B59BC9E7FFBE53 /* Pods_WhichBG.framework */; };
 		5A31B6691B6EB3EF00FBDF47 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B6681B6EB3EF00FBDF47 /* Core.swift */; };
 		5A31B66C1B6ED08600FBDF47 /* DesktopPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31B66A1B6ED08600FBDF47 /* DesktopPictureViewController.swift */; };
 		5A31B66D1B6ED08600FBDF47 /* DesktopPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31B66B1B6ED08600FBDF47 /* DesktopPictureViewController.xib */; };
@@ -16,7 +16,7 @@
 		5AF5979D1B355D0500F8CA82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF5979C1B355D0500F8CA82 /* Images.xcassets */; };
 		5AF597AC1B355D0500F8CA82 /* WhichBGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF597AB1B355D0500F8CA82 /* WhichBGTests.swift */; };
 		5AF597B81B35745200F8CA82 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF597B71B35745200F8CA82 /* main.swift */; };
-		8C80C3F42B85BA6EE4953354 /* Pods_WhichBGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A75BA8DDEDC40B3E4073E6 /* Pods_WhichBGTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8C80C3F42B85BA6EE4953354 /* Pods_WhichBGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A75BA8DDEDC40B3E4073E6 /* Pods_WhichBGTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +200,8 @@
 		5AF5978B1B355D0500F8CA82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Utkarsh Upadhyay";
 				TargetAttributes = {

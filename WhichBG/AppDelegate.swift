@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // This is the Popover we'll show:
         popOver.contentViewController = DesktopPictureViewController(nibName: "DesktopPictureViewController", bundle: nil)
         
-        outsideClickHandler = GlobalEventMonitor(mask: .LeftMouseDownMask | .RightMouseDownMask) { [unowned self] event in
+        outsideClickHandler = GlobalEventMonitor(mask: [.LeftMouseDownMask, .RightMouseDownMask]) { [unowned self] event in
             if self.popOver.shown {
                 self.closePopover(event)
             }
@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func showPopover(sender: AnyObject?) {
         if let button = statusBarItem!.button {
-            popOver.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSMinYEdge)
+            popOver.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSRectEdge.MinY)
         }
     }
     
@@ -58,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        println("Exiting.");
+        print("Exiting.");
     }
 
 }
