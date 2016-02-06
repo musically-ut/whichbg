@@ -20,8 +20,6 @@ class DesktopPictureViewController: NSViewController {
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://github.com/musically-ut/WhichBG")!)
     }
     
-    @IBOutlet weak var scrollView: NSScrollView!
-    
     func refreshFiles() -> [String]? {
         // Magic brought to you by SO:
         // http://stackoverflow.com/questions/30954492/how-to-get-the-path-to-the-current-workspace-screens-wallpaper-on-osx
@@ -82,10 +80,10 @@ class DesktopPictureViewController: NSViewController {
             // Silently ignoring the files for which data cannot be loaded
             let imagesAndPaths = files.map { ($0, NSImage(contentsOfFile: $0)) }.filter { $0.1 != nil }.map { ($0.0, $0.1!) }
             
-            let contentHeight = self.collectionView.contentSize.height
-            let gutter = CGFloat(10)
+            let contentWidth = self.collectionView.contentSize.width
+            let gutter = CGFloat(5)
             
-            self.imageCollectionView.minItemSize = NSMakeSize((16.0 / 10.0) * contentHeight + gutter, contentHeight)
+            self.imageCollectionView.minItemSize = NSMakeSize(contentWidth, 1.0 / (16.0 / 10.0) * contentWidth + gutter)
             self.imageCollectionView.itemPrototype = WallpaperItem()
             self.imageCollectionView.selectable = true
             self.imageCollectionView.content = imagesAndPaths.map { $0.1 }
