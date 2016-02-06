@@ -18,26 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-9d-NLx">
-                    <rect key="frame" x="207" y="7" width="66" height="19"/>
-                    <buttonCell key="cell" type="recessed" title="Quit" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oW9-zK-qPb">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                        <font key="font" metaFont="systemBold" size="12"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="Exitaction:" target="-2" id="eoX-Oq-lol"/>
-                    </connections>
-                </button>
-                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ITF-l7-JaN">
-                    <rect key="frame" x="437" y="4" width="25" height="25"/>
-                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sBt-Lg-y6C">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="helpAction:" target="-2" id="2EQ-rr-Ph6"/>
-                    </connections>
-                </button>
                 <scrollView ambiguous="YES" misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" allowsMagnification="YES" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-Zg-D1d">
                     <rect key="frame" x="20" y="32" width="440" height="213"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="DJk-PD-Tvx">
@@ -64,6 +44,26 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ITF-l7-JaN">
+                    <rect key="frame" x="437" y="4" width="25" height="25"/>
+                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sBt-Lg-y6C">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="helpAction:" target="-2" id="2EQ-rr-Ph6"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-9d-NLx">
+                    <rect key="frame" x="207" y="6" width="66" height="19"/>
+                    <buttonCell key="cell" type="recessed" title="Quit" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oW9-zK-qPb">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="systemBold" size="12"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="Exitaction:" target="-2" id="eoX-Oq-lol"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="s1d-9d-NLx" firstAttribute="centerX" secondItem="HEL-Zg-D1d" secondAttribute="centerX" id="S0T-Pq-5hc"/>
