@@ -11,6 +11,8 @@ import Foundation
 import SQLite
 
 class DesktopPictureViewController: NSViewController {
+    
+    var errorString: String?;
 
     @IBAction func Exitaction(sender: NSButton) {
         NSApplication.sharedApplication().terminate(self)
@@ -51,19 +53,19 @@ class DesktopPictureViewController: NSViewController {
                         }
                         return findAllExistingFilesIn(filesFolders)
                     } else {
-                        print("No table 'data' found in the DB.")
+                        errorString = "No table 'data' found in the DB."
                         return nil
                     }
                 } else {
-                    print("Unable to connect to DB.")
+                    errorString = "Unable to connect to DB."
                     return nil
                 }
             } else {
-                print("The database file was not found.")
+                errorString = "The database file was not found."
                 return nil
             }
         } else {
-            print("No Application Support directory was returned. Exiting.")
+            errorString = "No Application Support directory was returned. Exiting."
             return nil
         }
     }
@@ -71,8 +73,15 @@ class DesktopPictureViewController: NSViewController {
     @IBOutlet weak var collectionView: NSScrollView!
     @IBOutlet weak var imageCollectionView: NSCollectionView!
     
+    var errorLabel : NSTextView?
+    
     override func viewWillAppear() {
         super.viewWillAppear()
+        
+        if (errorLabel != nil) {
+            self.errorLabel!.removeFromSuperview()
+            self.errorLabel = nil
+        }
         
         if let files = self.refreshFiles() {
             self.imageCollectionView.hidden = false
@@ -97,11 +106,18 @@ class DesktopPictureViewController: NSViewController {
             let errorLabel = NSTextView(frame: self.collectionView.frame)
             errorLabel.drawsBackground = false
             errorLabel.alignCenter(nil)
-            errorLabel.string = "Sorry, could not load the wallpapers."
+            if (errorString == nil) {
+                errorLabel.string = "Sorry, could not load the wallpapers."
+            } else {
+                errorLabel.string = errorString!
+                print(errorString);
+            }
             
             let fontSize = CGFloat(16), contentSize = self.collectionView.contentSize
             errorLabel.frame = NSMakeRect(0, (contentSize.height - fontSize) / 2, contentSize.width, fontSize)
             errorLabel.editable = false
+            
+            self.errorLabel = errorLabel
   
             self.collectionView.addSubview(errorLabel)
         }
