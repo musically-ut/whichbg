@@ -8,25 +8,25 @@
 
 import Foundation
 
-private let defaultManager = NSFileManager.defaultManager()
+private let defaultManager = FileManager.default
 
-func isDir(path: String) -> Bool {
+func isDir(_ path: String) -> Bool {
     var isDir : ObjCBool = false
-    let exists = defaultManager.fileExistsAtPath(path, isDirectory: &isDir)
-    return (exists && isDir)
+    let exists = defaultManager.fileExists(atPath: path, isDirectory: &isDir)
+    return (exists && isDir.boolValue)
 }
 
-func isFile(path: String) -> Bool {
+func isFile(_ path: String) -> Bool {
     var isDir : ObjCBool = false
-    let exists = defaultManager.fileExistsAtPath(path, isDirectory: &isDir)
-    return (exists && !isDir)
+    let exists = defaultManager.fileExists(atPath: path, isDirectory: &isDir)
+    return (exists && !isDir.boolValue)
 }
 
 // Returns all "valid" combinations of folders and files passed to it.
-func findAllExistingFilesIn(fileFolderList: [String]) ->  [String] {
+func findAllExistingFilesIn(_ fileFolderList: [String]) ->  [String] {
     var folders : [String] = [], absFiles : [String] = [], relFiles : [String] = [];
     
-    let fullFileFolders = fileFolderList.map({ ($0 as NSString).stringByExpandingTildeInPath })
+    let fullFileFolders = fileFolderList.map({ ($0 as NSString).expandingTildeInPath })
     
     for fileFolder in fullFileFolders {
         if isDir(fileFolder) {
@@ -42,7 +42,7 @@ func findAllExistingFilesIn(fileFolderList: [String]) ->  [String] {
     
     for folder in folders {
         for file in relFiles {
-            let fileAbsPath = (folder as NSString).stringByAppendingPathComponent(file)
+            let fileAbsPath = (folder as NSString).appendingPathComponent(file)
             if isFile(fileAbsPath) {
                 allFiles.append(fileAbsPath)
             }

@@ -11,5 +11,5 @@ import Cocoa
 // Providing an entry point to the application without using Storyboards
 
 var delegate = AppDelegate()
-NSApplication.sharedApplication().delegate = delegate;
-NSApplicationMain(Process.argc, Process.unsafeArgv);
+NSApplication.shared().delegate = delegate;
+NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv);

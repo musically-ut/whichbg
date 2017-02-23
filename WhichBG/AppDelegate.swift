@@ -17,37 +17,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var outsideClickHandler: GlobalEventMonitor?
     let popOver = NSPopover()
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Using -1 instead of NSVariableStatusItemLength
         // See: http://stackoverflow.com/a/24026327/987185
-        statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1);
+        statusBarItem = NSStatusBar.system().statusItem(withLength: -1);
         statusBarItem!.image = NSImage(named: "StatusIcon");
         // statusBarItem!.action = Selector("statusIconClicked:");
-        statusBarItem!.action = Selector("togglePopover:")
+        statusBarItem!.action = #selector(AppDelegate.togglePopover(_:))
         
         // This is the Popover we'll show:
         popOver.contentViewController = DesktopPictureViewController(nibName: "DesktopPictureViewController", bundle: nil)
         
-        outsideClickHandler = GlobalEventMonitor(mask: [.LeftMouseDownMask, .RightMouseDownMask]) { [unowned self] event in
-            if self.popOver.shown {
+        outsideClickHandler = GlobalEventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [unowned self] event in
+            if self.popOver.isShown {
                 self.closePopover(event)
             }
         }
         outsideClickHandler?.start()
     }
     
-    func showPopover(sender: AnyObject?) {
+    func showPopover(_ sender: AnyObject?) {
         if let button = statusBarItem!.button {
-            popOver.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSRectEdge.MinY)
+            popOver.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
     }
     
-    func closePopover(sender: AnyObject?) {
+    func closePopover(_ sender: AnyObject?) {
         popOver.performClose(sender)
     }
     
-    @IBAction func togglePopover(sender: NSStatusItem) {
-        if popOver.shown {
+    @IBAction func togglePopover(_ sender: NSStatusItem) {
+        if popOver.isShown {
             closePopover(sender)
             outsideClickHandler?.stop()
         } else {
@@ -57,7 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         print("Exiting.");
     }
 
