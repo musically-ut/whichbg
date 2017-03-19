@@ -111,7 +111,7 @@ class DesktopPictureViewController: NSViewController {
                 errorLabel.string = "Sorry, could not load the wallpapers."
             } else {
                 errorLabel.string = errorString!
-                print(errorString);
+                print(errorString as Any);
             }
             
             let fontSize = CGFloat(16), contentSize = self.collectionView.contentSize
