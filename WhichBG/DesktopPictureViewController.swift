@@ -142,7 +142,7 @@ class WallpaperItem : NSCollectionViewItem {
     override var isSelected : Bool {
         didSet {
             if (isSelected && self.path != nil) {
-                print("Showing path: \(self.path)")
+                print("Showing path: \(String(describing: self.path))")
                 let fileURL = URL(fileURLWithPath: self.path!)
                 NSWorkspace.shared().activateFileViewerSelecting([ fileURL ])
             }

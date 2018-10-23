@@ -36,27 +36,28 @@ extension Table {
 
     // MARK: - CREATE TABLE
 
-    public func create(temporary: Bool = false, ifNotExists: Bool = false, block: (TableBuilder) -> Void) -> String {
+    public func create(temporary: Bool = false, ifNotExists: Bool = false, withoutRowid: Bool = false, block: (TableBuilder) -> Void) -> String {
         let builder = TableBuilder()
 
         block(builder)
 
         let clauses: [Expressible?] = [
-            create(Table.identifier, tableName(), temporary ? .Temporary : nil, ifNotExists),
-            "".wrap(builder.definitions) as Expression<Void>
+            create(Table.identifier, tableName(), temporary ? .temporary : nil, ifNotExists),
+            "".wrap(builder.definitions) as Expression<Void>,
+            withoutRowid ? Expression<Void>(literal: "WITHOUT ROWID") : nil
         ]
 
-        return " ".join(clauses.flatMap { $0 }).asSQL()
+        return " ".join(clauses.compactMap { $0 }).asSQL()
     }
 
     public func create(_ query: QueryType, temporary: Bool = false, ifNotExists: Bool = false) -> String {
         let clauses: [Expressible?] = [
-            create(Table.identifier, tableName(), temporary ? .Temporary : nil, ifNotExists),
+            create(Table.identifier, tableName(), temporary ? .temporary : nil, ifNotExists),
             Expression<Void>(literal: "AS"),
             query
         ]
 
-        return " ".join(clauses.flatMap { $0 }).asSQL()
+        return " ".join(clauses.compactMap { $0 }).asSQL()
     }
 
     // MARK: - ALTER TABLE … ADD COLUMN
@@ -126,35 +127,28 @@ extension Table {
 
     // MARK: - CREATE INDEX
 
-    public func createIndex(_ columns: Expressible...) -> String {
-        return createIndex(columns)
-    }
-
-    public func createIndex(_ columns: [Expressible], unique: Bool = false, ifNotExists: Bool = false) -> String {
+    public func createIndex(_ columns: Expressible..., unique: Bool = false, ifNotExists: Bool = false) -> String {
         let clauses: [Expressible?] = [
-            create("INDEX", indexName(columns), unique ? .Unique : nil, ifNotExists),
+            create("INDEX", indexName(columns), unique ? .unique : nil, ifNotExists),
             Expression<Void>(literal: "ON"),
             tableName(qualified: false),
             "".wrap(columns) as Expression<Void>
         ]
 
-        return " ".join(clauses.flatMap { $0 }).asSQL()
+        return " ".join(clauses.compactMap { $0 }).asSQL()
     }
 
     // MARK: - DROP INDEX
 
-    public func dropIndex(_ columns: Expressible...) -> String {
-        return dropIndex(columns)
-    }
 
-    public func dropIndex(_ columns: [Expressible], ifExists: Bool = false) -> String {
+    public func dropIndex(_ columns: Expressible..., ifExists: Bool = false) -> String {
         return drop("INDEX", indexName(columns), ifExists)
     }
 
     fileprivate func indexName(_ columns: [Expressible]) -> Expressible {
         let string = (["index", clauses.from.name, "on"] + columns.map { $0.expression.template }).joined(separator: " ").lowercased()
 
-        let index = string.characters.reduce("") { underscored, character in
+        let index = string.reduce("") { underscored, character in
             guard character != "\"" else {
                 return underscored
             }
@@ -175,12 +169,12 @@ extension View {
 
     public func create(_ query: QueryType, temporary: Bool = false, ifNotExists: Bool = false) -> String {
         let clauses: [Expressible?] = [
-            create(View.identifier, tableName(), temporary ? .Temporary : nil, ifNotExists),
+            create(View.identifier, tableName(), temporary ? .temporary : nil, ifNotExists),
             Expression<Void>(literal: "AS"),
             query
         ]
 
-        return " ".join(clauses.flatMap { $0 }).asSQL()
+        return " ".join(clauses.compactMap { $0 }).asSQL()
     }
 
     // MARK: - DROP VIEW
@@ -202,7 +196,7 @@ extension VirtualTable {
             using
         ]
 
-        return " ".join(clauses.flatMap { $0 }).asSQL()
+        return " ".join(clauses.compactMap { $0 }).asSQL()
     }
 
     // MARK: - ALTER TABLE … RENAME TO
@@ -306,27 +300,27 @@ public final class TableBuilder {
     }
 
     public func column<V : Value>(_ name: Expression<V?>, unique: Bool = false, check: Expression<Bool>? = nil, defaultValue: Expression<V>? = nil, collate: Collation) where V.Datatype == String {
-        column(name, V.declaredDatatype, nil, false, unique, check, defaultValue, nil, collate)
+        column(name, V.declaredDatatype, nil, true, unique, check, defaultValue, nil, collate)
     }
 
     public func column<V : Value>(_ name: Expression<V?>, unique: Bool = false, check: Expression<Bool>? = nil, defaultValue: Expression<V?>, collate: Collation) where V.Datatype == String {
-        column(name, V.declaredDatatype, nil, false, unique, check, defaultValue, nil, collate)
+        column(name, V.declaredDatatype, nil, true, unique, check, defaultValue, nil, collate)
     }
 
     public func column<V : Value>(_ name: Expression<V?>, unique: Bool = false, check: Expression<Bool>? = nil, defaultValue: V, collate: Collation) where V.Datatype == String {
-        column(name, V.declaredDatatype, nil, false, unique, check, defaultValue, nil, collate)
+        column(name, V.declaredDatatype, nil, true, unique, check, defaultValue, nil, collate)
     }
 
     public func column<V : Value>(_ name: Expression<V?>, unique: Bool = false, check: Expression<Bool?>, defaultValue: Expression<V>? = nil, collate: Collation) where V.Datatype == String {
-        column(name, V.declaredDatatype, nil, false, unique, check, defaultValue, nil, collate)
+        column(name, V.declaredDatatype, nil, true, unique, check, defaultValue, nil, collate)
     }
 
     public func column<V : Value>(_ name: Expression<V?>, unique: Bool = false, check: Expression<Bool?>, defaultValue: Expression<V?>, collate: Collation) where V.Datatype == String {
-        column(name, V.declaredDatatype, nil, false, unique, check, defaultValue, nil, collate)
+        column(name, V.declaredDatatype, nil, true, unique, check, defaultValue, nil, collate)
     }
 
     public func column<V : Value>(_ name: Expression<V?>, unique: Bool = false, check: Expression<Bool?>, defaultValue: V, collate: Collation) where V.Datatype == String {
-        column(name, V.declaredDatatype, nil, false, unique, check, defaultValue, nil, collate)
+        column(name, V.declaredDatatype, nil, true, unique, check, defaultValue, nil, collate)
     }
 
     fileprivate func column(_ name: Expressible, _ datatype: String, _ primaryKey: PrimaryKey?, _ null: Bool, _ unique: Bool, _ check: Expressible?, _ defaultValue: Expressible?, _ references: (QueryType, Expressible)?, _ collate: Collation?) {
@@ -411,7 +405,7 @@ public final class TableBuilder {
             delete.map { Expression<Void>(literal: "ON DELETE \($0.rawValue)") }
         ]
 
-        definitions.append(" ".join(clauses.flatMap { $0 }))
+        definitions.append(" ".join(clauses.compactMap { $0 }))
     }
 
 }
@@ -462,7 +456,7 @@ private extension QueryType {
             name
         ]
 
-        return " ".join(clauses.flatMap { $0 })
+        return " ".join(clauses.compactMap { $0 })
     }
 
     func rename(to: Self) -> String {
@@ -481,7 +475,7 @@ private extension QueryType {
             name
         ]
 
-        return " ".join(clauses.flatMap { $0 }).asSQL()
+        return " ".join(clauses.compactMap { $0 }).asSQL()
     }
 
 }
@@ -499,7 +493,7 @@ private func definition(_ column: Expressible, _ datatype: String, _ primaryKey:
         collate.map { " ".join([Expression<Void>(literal: "COLLATE"), $0]) }
     ]
 
-    return " ".join(clauses.flatMap { $0 })
+    return " ".join(clauses.compactMap { $0 })
 }
 
 private func reference(_ primary: (QueryType, Expressible)) -> Expressible {
@@ -512,8 +506,8 @@ private func reference(_ primary: (QueryType, Expressible)) -> Expressible {
 
 private enum Modifier : String {
 
-    case Unique = "UNIQUE"
+    case unique = "UNIQUE"
 
-    case Temporary = "TEMPORARY"
+    case temporary = "TEMPORARY"
 
 }

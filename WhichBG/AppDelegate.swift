@@ -22,6 +22,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // See: http://stackoverflow.com/a/24026327/987185
         statusBarItem = NSStatusBar.system().statusItem(withLength: -1);
         statusBarItem!.image = NSImage(named: "StatusIcon");
+        
+        // Make the Icons behave nicely on dark mode.
+        statusBarItem!.image?.isTemplate = true;
+        
         // statusBarItem!.action = Selector("statusIconClicked:");
         statusBarItem!.action = #selector(AppDelegate.togglePopover(_:))
         
